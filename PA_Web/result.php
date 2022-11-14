@@ -22,7 +22,7 @@
     <header class="result">
         <div class="Heads">
             <span class="header-kiri">
-              <h1>Ahzidur</h1>
+              <h1 onclick="document.location.href = 'index.php'">Ahzidur</h1>
             </span>   
     
             <div id="header-kanan">
@@ -47,7 +47,13 @@
                 <p>Barang: </p><p> <?php echo $_POST['item']; ?></p>
             </div>
             <div class="bills-text">
-                <p>Address: </p><p> <?php echo $_POST['address']; ?></p>
+                <p>Alamat: </p><p> <?php echo $_POST['address']; ?></p>
+            </div>
+            <div class="bills-text">
+                <p>Tanggal Pemesanan: </p>
+                <!-- Penggunaan fungsi date -->
+                <?php date_default_timezone_set("Asia/Makassar"); $date = date("Y-m-d") ?>
+                <p><?php echo $date ?></p>
             </div>
             <a href="index.php" class="sumbit" onclick="alert('Pesanan anda diterima!')">Konfirmasi</a>
         </div>
@@ -59,12 +65,38 @@
         <p style="margin: 0; padding-bottom: 10px;">Copyright &copy 2022 All Rights Reserved</p>
     </div>
 
-<script>
-    function btnClick() {
-        document.location.href = "result.php";
-    }
-</script>
-<script src="script.js"></script>
-<script src="jquery.js"></script>
+    <script>
+        function btnClick() {
+            document.location.href = "result.php";
+        }
+    </script>
+    <script src="script.js"></script>
+    <script src="jquery.js"></script>
+
+    <?php
+        require('koneksi.php');
+        
+        if(isset($_POST['elektronik'])){
+            $nama = $_POST['name'];
+            $telepon =  $_POST['phone'];
+            $alamat =  $_POST['address'];
+            $barang =  $_POST['item'];
+
+            $sql = "SELECT id FROM barang WHERE nama = '$barang'";
+            $query = mysqli_query($conn, $sql);
+            $barang = mysqli_fetch_array($query);
+            $id_barang = $barang['id'];
+            
+            $sql = "INSERT INTO pesanan (nama, telepon, alamat, tanggal_beli, barang_id) VALUES(
+                '".$nama."', 
+                '".$telepon."', 
+                '".$alamat."', 
+                '".$date."',
+                '".$id_barang."'
+            )";
+            $query = mysqli_query($conn, $sql);
+        }
+        // $result = mysqli_query($conn, $sql) or trigger_error("Query Failed! SQL: $sql - Error: ".mysqli_error($conn), E_USER_ERROR);
+    ?>
 </body>
 </html>

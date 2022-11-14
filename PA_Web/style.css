@@ -46,6 +46,10 @@ header {
     margin-left: 30px;
     margin-top: 30px;    
   }
+
+  span h1:hover {
+    cursor: pointer;
+  }
   
   #header-kanan {
     color: black;
@@ -87,11 +91,9 @@ header {
   }
 
 .content1{
-  height: 800px;
-  width: 90%;
   padding: 150px 0px 100px 0;
   background-image: url("assets/Logo.jpg");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   text-align: center;
 }
@@ -102,13 +104,53 @@ header {
   padding-top: 100px;
 }
 
+.content2{
+  text-align: center;
+  margin: 10px 0;
+}
+
+.content2 a,
+.btn-buat {
+  background-color: rgb(0, 153, 255);
+  padding: 10px;
+  position: relative;
+  color: black;
+  border-radius: 7px;
+  border: 0;
+}
+
+.btn-buat:hover {
+  cursor: pointer;
+}
+
+.aksi {
+  margin: 15px 0;
+}
+
+.btn-aksi {
+  padding: 10px;
+  color: white;
+  border-radius: 7px;
+  text-align: center;
+  border: 0;
+}
+
+.update {
+  background-color: rgb(255, 94, 0);
+}
+.delete {
+  background-color: red;
+}
 
 /* list gambar */
+.konten-gambar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 div.gallery {
   border: 2px solid #ccc;
   width: 90%;
-  height: 200px;
-  
 }
 
 div.gallery:hover {
@@ -121,16 +163,8 @@ div.gallery img {
 }
 
 div.desc {
-  padding: 15px;
+  /* padding: 15px; */
   text-align: center;
-}
-
-
-.responsive {
-  padding: 0px 6px;
-  float: left;
-  width: 32.99999%;
-  
 }
 
 .clearfix:after {
@@ -144,7 +178,6 @@ div.desc {
   width: 100%;
   padding-left: 10%;
 }
-
 
 .form-container {
   background-color: #eee;
@@ -170,8 +203,8 @@ select {
   line-height: 30px;
 }
 
-input {
-  line-height: 24pt;
+input, select, textarea {
+  width: 50%;
 }
 
 textarea {
@@ -218,4 +251,16 @@ textarea {
 
 header.result {
   position: relative;
+}
+
+table {
+  background-color: black;
+}
+
+th {
+  background-color: #eee;
+} 
+
+td {
+  background-color: white;
 }
